@@ -1,5 +1,14 @@
 ## Getting Started
 
+- project overview
+  - folder structured
+  - sandbox structured
+- techstack used
+- how to run locally
+- commit message conventional
+
+---
+
 Install required dependencies
 
 ```bash
