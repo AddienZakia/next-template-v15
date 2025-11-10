@@ -41,7 +41,7 @@ export default function Typography<T extends React.ElementType>({
     <Component
       id={id}
       className={cn(
-        'font-nunito text-black',
+        'font-nunitoSans text-black',
         // *=============== Font Type ==================
         {
           regular: 'font-normal',
@@ -55,7 +55,7 @@ export default function Typography<T extends React.ElementType>({
           hs: 'max-md:text-[16px] max-md:leading-7 md:text-[20px] md:leading-8',
           l: 'max-md:text-[14px] max-md:leading-6 md:text-[16px] md:leading-7',
           m: 'max-md:text-[12px] max-md:leading-5 md:text-[14px] md:leading-6',
-          s: 'max-md:text-[10px] max-md:leading-4 md:text-[12px] md:leading-5',
+          s: 'max-md:text-[12px] max-md:leading-4 md:text-[12px] md:leading-5',
           xs: 'max-md:text-[10px] max-md:leading-4',
         }[variant],
         className,

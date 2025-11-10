@@ -7,6 +7,41 @@
 - how to run locally
 - commit message conventional
 
+### Project Overview
+
+#### Folder Strucutured
+
+```json
+├── public
+└── src
+  ├── app
+  │  ├── auth
+  │  │ ├── (container)
+  │  │ │ └── SendEmail.tsx
+  │  │ ├── login
+  │  │ │ └── page.tsx
+  │  │ └── register
+  │  │   └── page.tsx
+  │  ├── (dashboard)
+  │  │ └── admin
+  │  │   ├── job
+  │  │   ├── [id]
+  │  │   │   └── page.tsx
+  │  │   └── (container)
+  │  │     └── ModalCreateJob.tsx
+  │  ├── fonts
+  │  └── sandbox
+  │    ├── button
+  │    ├── colors
+  │    ├── form
+  │    ├── typography
+  │    └── page.tsx
+  ├── components
+  ├── contents
+  ├── lib
+  └── types
+```
+
 ---
 
 Install required dependencies

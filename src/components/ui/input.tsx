@@ -2,9 +2,12 @@
 
 import { cn } from '@/lib/utils';
 import * as React from 'react';
+import { RegisterOptions, get, useFormContext } from 'react-hook-form';
 import Typography from '../Typography';
 
 export interface InputProps extends React.ComponentProps<'input'> {
+  id: string;
+  validation?: RegisterOptions;
   label: string;
   helperText?: string;
   showCharCount?: boolean;
@@ -12,6 +15,8 @@ export interface InputProps extends React.ComponentProps<'input'> {
 }
 
 function Input({
+  id,
+  validation,
   label,
   helperText,
   showCharCount = false,
@@ -22,6 +27,13 @@ function Input({
 }: InputProps) {
   const [value, setValue] = React.useState('');
   const isError = maxChars !== undefined && value.length > maxChars;
+
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  const error = get(errors, id);
 
   return (
     <div className="w-full">
@@ -35,6 +47,7 @@ function Input({
 
       {/* Input field */}
       <input
+        {...register(id, validation)}
         type={props.type || 'text'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -59,7 +72,7 @@ function Input({
             variant="m"
             className={cn(isError ? 'text-danger-main' : 'text-neutral-70')}
           >
-            {helperText}
+            {error ? error.message : helperText}
           </Typography>
           {showCharCount && maxChars && (
             <Typography
