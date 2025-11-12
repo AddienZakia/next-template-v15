@@ -1,18 +1,10 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { TextareaProps } from '@/types/components/TextArea';
 import * as React from 'react';
-import { RegisterOptions, get, useFormContext } from 'react-hook-form';
+import { get, useFormContext } from 'react-hook-form';
 import Typography from '../Typography';
-
-export interface TextareaProps extends React.ComponentProps<'textarea'> {
-  id: string;
-  validation?: RegisterOptions;
-  label: string;
-  helperText?: string;
-  showCharCount?: boolean;
-  maxChars?: number;
-}
 
 function Textarea({
   id,

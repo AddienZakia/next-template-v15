@@ -8,7 +8,7 @@ import Typography from '../Typography';
 export interface InputProps extends React.ComponentProps<'input'> {
   id: string;
   validation?: RegisterOptions;
-  label: string;
+  label?: string;
   helperText?: string;
   showCharCount?: boolean;
   maxChars?: number;
@@ -25,32 +25,31 @@ function Input({
   disabled,
   ...props
 }: InputProps) {
-  const [value, setValue] = React.useState('');
-  const isError = maxChars !== undefined && value.length > maxChars;
-
   const {
     register,
     formState: { errors },
+    watch,
   } = useFormContext();
 
   const error = get(errors, id);
 
+  const value = watch(id) || '';
+  const isError = maxChars !== undefined && value.length > maxChars;
+
   return (
     <div className="w-full">
-      {/* Label */}
-      <div className="mb-2">
-        <Typography variant="m" className={cn(isError && 'text-danger-main')}>
-          {label}
-          {props.required && <span className="text-danger-main">*</span>}
-        </Typography>
-      </div>
+      {label && (
+        <div className="mb-2">
+          <Typography variant="m" className={cn(isError && 'text-danger-main')}>
+            {label}
+            {props.required && <span className="text-danger-main">*</span>}
+          </Typography>
+        </div>
+      )}
 
-      {/* Input field */}
       <input
         {...register(id, validation)}
         type={props.type || 'text'}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
         disabled={disabled}
         className={cn(
           'file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground',
@@ -60,19 +59,21 @@ function Input({
           'aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-invalid:ring-2',
           'disabled:bg-muted disabled:text-muted-foreground disabled:border-input disabled:cursor-not-allowed',
           isError && 'border-red-500 focus:ring-red-500',
+          error && 'border-red-500 focus:ring-red-500',
           className,
         )}
         {...props}
       />
 
-      {/* Helper & Char count */}
-      {(helperText || showCharCount) && (
+      {(helperText || showCharCount || error) && (
         <div className="mt-1 flex items-center justify-between text-sm">
           <Typography
             variant="m"
-            className={cn(isError ? 'text-danger-main' : 'text-neutral-70')}
+            className={cn(
+              isError || error ? 'text-danger-main' : 'text-neutral-70',
+            )}
           >
-            {error ? error.message : helperText}
+            {error?.message?.toString() || helperText}
           </Typography>
           {showCharCount && maxChars && (
             <Typography

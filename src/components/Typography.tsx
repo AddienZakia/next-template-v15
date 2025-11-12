@@ -1,30 +1,6 @@
 import { cn } from '@/lib/utils';
+import { TypographyProps } from '@/types/components/Typography';
 import * as React from 'react';
-
-export enum TypographyVariant {
-  d,
-  hl,
-  hm,
-  hs,
-  l,
-  m,
-  s,
-  xs,
-}
-
-// export type FontVariant = ''
-
-export type FontWeight = 'bold' | 'regular';
-
-type TypographyProps<T extends React.ElementType> = {
-  as?: T;
-  id?: string;
-  className?: string;
-  weight?: FontWeight;
-  //   font?: FontVariant;
-  variant?: keyof typeof TypographyVariant;
-  children: React.ReactNode;
-};
 
 export default function Typography<T extends React.ElementType>({
   as,
@@ -53,9 +29,10 @@ export default function Typography<T extends React.ElementType>({
           hl: 'max-md:text-[24px] max-md:leading-9 md:text-[32px] md:leading-11',
           hm: 'max-md:text-[20px] max-md:leading-8 md:text-[24px] md:leading-9',
           hs: 'max-md:text-[16px] max-md:leading-7 md:text-[20px] md:leading-8',
+          xl: 'max-md:text-[16px] max-md:leading-6 md:text-[18px] md:leading-7',
           l: 'max-md:text-[14px] max-md:leading-6 md:text-[16px] md:leading-7',
           m: 'max-md:text-[12px] max-md:leading-5 md:text-[14px] md:leading-6',
-          s: 'max-md:text-[12px] max-md:leading-4 md:text-[12px] md:leading-5',
+          s: 'max-md:text-[10px] max-md:leading-4 md:text-[12px] md:leading-5',
           xs: 'max-md:text-[10px] max-md:leading-4',
         }[variant],
         className,

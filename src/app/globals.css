@@ -3,7 +3,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /*  Neutral  */
   --color-neutral-10: #ffffff;
   --color-neutral-20: #fafafa;
   --color-neutral-30: #ededed;
@@ -15,7 +14,6 @@
   --color-neutral-90: #404040;
   --color-neutral-100: #1d1f20;
 
-  /*  Primary  */
   --color-primary-main: #01959f;
   --color-primary-surface: #f3fbfc;
   --color-primary-border: #4db5bc;
@@ -23,7 +21,6 @@
   --color-primary-pressed: #01595f;
   --color-primary-focus: rgba(1, 149, 159, 0.2);
 
-  /*  Secondary  */
   --color-secondary-main: #fbc037;
   --color-secondary-surface: #fffcf5;
   --color-secondary-border: #feeabc;
@@ -31,7 +28,6 @@
   --color-secondary-pressed: #fa9810;
   --color-secondary-focus: rgba(251, 192, 55, 0.2);
 
-  /* Danger  */
   --color-danger-main: #e01428;
   --color-danger-surface: #fff9fa;
   --color-danger-border: #f581b7;
@@ -39,7 +35,6 @@
   --color-danger-pressed: #700a14;
   --color-danger-focus: rgba(224, 20, 40, 0.2);
 
-  /* Warning  */
   --color-warning-main: #ca7336;
   --color-warning-surface: #fcf7f3;
   --color-warning-border: #feb17b;
@@ -47,7 +42,6 @@
   --color-warning-pressed: #985628;
   --color-warning-focus: rgba(202, 115, 54, 0.2);
 
-  /* Success  */
   --color-success-main: #43936c;
   --color-success-surface: #f7f7f7;
   --color-success-border: #b8dbca;
@@ -206,4 +200,28 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.card-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.card-scrollbar::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.card-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
