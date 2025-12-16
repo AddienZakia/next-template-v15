@@ -4,9 +4,8 @@ import './globals.css';
 import Providers from './providers';
 
 export const metadata: Metadata = {
-  title: 'Hiring Applications',
-  description:
-    'A platform to manage job listings, candidate applications, and the recruitment process efficiently.',
+  title: '',
+  description: '',
 };
 
 export default function RootLayout({
